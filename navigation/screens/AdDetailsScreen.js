@@ -39,9 +39,6 @@ const AdDetailsScreen = () => {
     const fetchAdDetails = async () => {
       try {
         const userData = await AsyncStorage.getItem("userData");
-          console.log('==============èèèèèè==================')
-          console.log("userdata", userData)
-          console.log('===============èèèèè=================')
 
         const response = await fetch(`${IP}/advertisements/${adId}`);
         const data = await response.json();
@@ -216,36 +213,6 @@ const AdDetailsScreen = () => {
                       )}
                     </View>
                   ))}
-              </View>
-
-              <View style={styles.divider}></View>
-
-              <View style={styles.mapContainer}>
-                <Text style={styles.locationText}>
-                  Ou se trouve le gardiennage :
-                </Text>
-                <View style={styles.mapBlock}>
-                  {!loading && (
-                    <MapView
-                      style={styles.map}
-                      initialRegion={{
-                        latitude: adData.latitude,
-                        longitude: adData.longitude,
-                        latitudeDelta: 0.01,
-                        longitudeDelta: 0.01,
-                      }}
-                    >
-                      <Circle
-                        center={{
-                          latitude: adData.latitude,
-                          longitude: adData.longitude,
-                        }}
-                        radius={200} // 200 mètres
-                        fillColor="#A3D28880"
-                      />
-                    </MapView>
-                  )}
-                </View>
               </View>
             </View>
           </View>
